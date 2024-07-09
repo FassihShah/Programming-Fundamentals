@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+int getSecLargest(int array[], int);
+int main()
+{
+	int array[7] = { 23,17,5,16,1,19,14 };
+	cout << getSecLargest(array, 7);
+	cout << endl;
+	return 0;
+}
+int getSecLargest(int array[], int size)
+{
+	int largest = array[0], secLargest = array[1];
+	for (int i = 1; i < size; i=i+1)
+	{
+		if (array[i] > largest)
+		{
+			largest = array[i];
+		}
+		else if (array[i] > secLargest)
+		{
+			secLargest = array[i];
+		}
+	}
+	return secLargest;
+}

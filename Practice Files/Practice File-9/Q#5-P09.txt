@@ -1,0 +1,66 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+int main()
+{
+	char name1[100],name2[100],greatestName[100],lowestName[100];
+	int age1, age2,cnt,greatestAge,lowestAge,num;
+	cout << "Enter the number of students : ";
+	cin >> num;
+	while (num < 1 || num>25)
+	{
+		cout << "Kindly Enter number of students from 1 to 25 : ";
+		cin >> num;
+	}
+	cout << "Enter the name of 1st student : ";
+	cin >> name1;
+	cout << "Enter the age of 1st student : ";
+	cin >> age1;
+	while (age1<1)
+	{
+		cout << "Kindly Enter a valid age of 1st student : ";
+		cin >> age1;
+	}
+	strcpy(greatestName, name1);
+	strcpy(lowestName, name1);
+	greatestAge = age1;
+	lowestAge = age1;
+	for (cnt=2;cnt<=num;cnt=cnt+1)
+	{
+		cout << "Enter the name of " << cnt << " student : ";
+		cin >> name2;
+		cout << "Enter the age of " << cnt << " student : ";
+		cin >> age2;
+		while (age2 < 1)
+		{
+			cout << "Kindly Enter a valid age of " << cnt << " student : ";
+			cin >> age2;
+		}
+		if (strcmp(name2, greatestName) > 0)
+		{
+			strcpy(greatestName, name2);
+		}
+		else if (strcmp(name2, greatestName) == 0)
+		{
+			if (age2 > greatestAge)
+			{
+				strcpy(greatestName, name2);
+			}
+		}
+		else if (strcmp(name2, lowestName) < 0)
+		{
+			strcpy(lowestName, name2);
+		}
+		else if (strcmp(name2, lowestName) == 0)
+		{
+			if (age2 < lowestAge)
+			{
+				strcpy(lowestName, name2);
+			}
+		}
+	}
+	cout << lowestName <<" would be at the front of line" << endl;
+	cout << greatestName << " would be at the end of line";
+	cout << endl;
+	return 0;
+}

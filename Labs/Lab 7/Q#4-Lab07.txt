@@ -1,0 +1,85 @@
+#include<iostream>
+using namespace std;
+bool isBumpyNumber(long long int);
+int main()
+{
+	/*long long int num = 100;
+	floatapercentage,cnt=0;
+	do {
+		if (isBumpyNumber(num) == 1)
+		{
+			cnt = cnt + 1;
+		}
+		num = num + 1;
+		percentage = (cnt / num) * 100.0;
+	} while (percentage != 50);
+	cout << num;*/
+	cout << isBumpyNumber(13300);
+	cout << endl;
+	return 0;
+}
+
+bool isIncreasingNumber( long long int num)
+{
+	int mode1 = num % 10,mode2=num%10;
+	int n = num;
+	bool status;
+	num = num / 10;
+	do
+	{
+		mode1 = mode2;
+		mode2 = num % 10;
+		num = num / 10;
+	} while (mode2 <= mode1 && num != 0);
+	if (num != 0)
+	{
+		status = false;
+	}
+	else if (num == 0 && mode2 > mode1)
+	{
+		status = false;
+	}
+	else
+	{
+		status = true;
+	}
+	return status;
+}
+
+
+bool isDecreasingNumber(long long int num)
+{
+	int mode1 = num % 10, mode2 = num % 10;
+	int n = num;
+	bool status;
+	num = num / 10;
+	do
+	{
+		mode1 = mode2;
+		mode2 = num % 10;
+		num = num / 10;
+	} while (mode2 >= mode1 && num != 0);
+	if (num != 0)
+	{
+		status = false;
+	}
+	else if (num == 0 && mode2 < mode1)
+	{
+		status = false;
+	}
+	else
+	{
+		status = true;
+	}
+	return status;
+}
+
+bool isBumpyNumber(long long int num)
+{
+	bool status=0;
+	if (isDecreasingNumber(num) == 0 && isIncreasingNumber(num) == 0)
+	{
+		status = 1;
+	}
+	return status;
+}

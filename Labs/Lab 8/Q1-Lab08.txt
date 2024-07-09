@@ -1,0 +1,78 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int hr = 2, min = 34, sec = 53;
+	cout << endl;
+	return 0;
+}
+
+
+
+
+void printTimeIn24HoursFormat(int hours, int minutes, int seconds)
+{
+	cout << setw(2) << setfill('0') << hours << ":" << setw(2) <<  setfill('0') << minutes << ":" << setw(2) << setfill('0') << seconds;
+}
+void printTimeIn12HoursFormat(int hours, int minutes, int seconds)
+{
+	char bound = 65;
+	if (hours > 12)
+	{
+		hours = hours - 12;
+		bound = 80;
+	}
+	else if (hours == 12)
+	{
+		bound = 80;
+	}
+	else if (hours == 0)
+	{
+		hours = 12;
+	}
+	cout<< setw(2) << setfill('0') << hours << ":" << setw(2) << setfill('0') << minutes << ":" << setw(2) << setfill('0') << seconds << " "<<bound<<"M";
+}
+void incrementHours(int* hours, int* minutes, int* seconds,int increment=1)
+{
+	*hours = *hours + increment;
+}
+void incrementMinutes(int* hours, int* minutes, int* seconds, int increment=1)
+{
+	if ((*minutes + increment) >= 60)
+	{
+		*minutes = *minutes + increment - 60;
+		*hours = *hours + 1;
+		while (*minutes >= 60)
+		{
+			*minutes = *minutes - 60;
+			*hours = *hours + 1;
+		}
+	}
+	else
+	{
+		*minutes = *minutes + increment;
+	}
+}
+void incrementSeconds(int* hours, int* minutes, int* seconds, int increment=1)
+{
+	if ((*seconds + increment) >= 60)
+	{
+		*seconds = *seconds + increment - 60;
+		*minutes = *minutes + 1;
+		while (*seconds >= 60)
+		{
+			*seconds = *seconds - 60;
+			*minutes = *minutes + 1;
+		}
+		while (*minutes >= 60)
+		{
+			*minutes = *minutes - 60;
+			*hours = *hours + 1;
+		}
+	}
+	else
+	{
+		*seconds = *seconds + increment;
+	}
+}

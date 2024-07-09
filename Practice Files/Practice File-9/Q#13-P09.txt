@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int num, maxDigit, maxLenght = 1, currentDigit, currentLenght = 1;
+    cout << "Enter the number : ";
+    cin >> num;
+    currentDigit = num % 10;
+    maxDigit = currentDigit;
+    num = num / 10;
+    while (num != 0)
+    {
+        if (num % 10 == currentDigit)
+        {
+            currentLenght = currentLenght + 1;
+        }
+        else
+        {
+            currentDigit = num % 10;
+            currentLenght = 1;
+        }
+        if (maxLenght < currentLenght)
+        {
+            maxLenght = currentLenght;
+            maxDigit = currentDigit;
+        }
+        else if (maxLenght == currentLenght && maxDigit < num % 10)
+        {
+            maxDigit = num % 10;
+        }
+        num = num / 10;
+    }
+    cout << maxDigit;
+    cout << endl;
+    return 0;
+}

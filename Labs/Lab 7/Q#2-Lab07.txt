@@ -1,0 +1,142 @@
+#include<iostream>
+using namespace std;
+bool isLeftTruncatable(long long int );
+bool isRightTruncatable(long long int);
+bool isTruncatable(long long int );
+
+int main()
+{
+	int x;
+	cin >> x;
+	cout << isTruncatable(x);
+	cout << endl;
+	return 0;
+}
+
+
+bool isPrime(int num)
+{
+	int cnt = 2;
+	int status = 1;
+	if (num == 2 || num == 3)
+	{
+		status = 1;
+	}
+	else
+	{
+		while(cnt<num/2 && status==1)
+		{
+			if (num % cnt == 0)
+			{
+				status = 0;
+			}
+			cnt = cnt + 1;
+		}
+	}
+	return status;
+}
+
+
+bool isLeftTruncatable(long long int num)
+{
+	int lenght = 1, divisor = 1;
+	long long int n = num;
+	bool status = false;
+	while (num >= 10)
+	{
+		num = num / 10;
+		lenght = lenght + 1;
+		divisor = divisor * 10;
+	}
+	int cnt = 0;
+	if (isPrime(n) == 1)
+	{
+		cnt = cnt + 1;
+		while (n > 10)
+		{
+			n = n % divisor;
+			if (isPrime(n) == 1)
+			{
+				cnt = cnt + 1;
+			}
+			divisor = divisor / 10;
+		}
+	}
+	if (cnt == lenght)
+	{
+		status = true;
+	}
+	return status;
+}
+
+
+bool isRightTruncatable(long long int num)
+{
+	int lenght = 1, divisor = 1;
+	long long int n = num;
+	bool status = false;
+	while (num >= 10)
+	{
+		num = num / 10;
+		lenght = lenght + 1;
+		divisor = divisor * 10;
+	}
+	int cnt = 0;
+	if (isPrime(n) == 1)
+	{
+		cnt = cnt + 1;
+		n = n / 10;
+		while (n !=0)
+		{
+			
+			if (isPrime(n) == 1)
+			{
+				cnt = cnt + 1;
+			}
+			n = n / 10;
+		}
+	}
+	if (cnt == lenght)
+	{
+		status = true;
+	}
+	return status;
+}
+
+
+bool isTruncatable(long long int num)
+{
+		int lenght = 1, divisor = 1;
+		long long int n = num;
+		bool status = false;
+		while (num >= 10)
+		{
+			num = num / 10;
+			lenght = lenght + 1;
+			divisor = divisor * 10;
+		}
+		int cnt = 0;
+		if (isPrime(n) == 1)
+		{
+			cnt = cnt + 1;
+			n = n % divisor;
+			n = n / 10;
+			while (n != 0)
+			{
+
+				if (isPrime(n) == 1)
+				{
+					cnt = cnt + 1;
+				}
+				divisor = divisor / 10;
+				n = n / 10;
+				n = n % divisor;
+			}
+		}
+		if (cnt == lenght)
+		{
+			status = true;
+		}
+		return status;
+
+}

@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int carryCount(int, int);
+int main()
+{
+	int num1, num2;
+	cout << "Enter 1st number : ";
+	cin >> num1;
+	cout << "Enter 2nd number : ";
+	cin >> num2;
+	cout << "Carry count are : "<< countCarry(num1, num2);
+	cout << endl;
+	return 0;
+}
+
+
+
+
+
+int countCarry(int num1,int num2)
+{
+	int mode1 = 0, mode2,carry=0;
+	while (num1 != 0 && num2 != 0)
+	{
+		mode1 = num1 % 10 + mode1;
+		mode2 = num2 % 10;
+		if ((mode1 + mode2) >= 10)
+		{
+			carry = carry + 1;
+			mode1 = (mode1 + mode2) - 10;
+		}
+		else
+		{
+			mode1 = 0;
+		}
+		num1 = num1 / 10;
+		num2 = num2 / 10;
+	}
+
+	return carry;
+}

@@ -1,0 +1,69 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+void lotteryPrizeApp();
+int main()
+{
+	lotteryPrizeApp();
+	cout << endl;
+	return 0;
+}
+
+
+void assignRandomValues(int array[], int size)
+{
+	srand(time(0));
+	for (int i = 0; i < size; i = i + 1)
+	{
+		array[i] = rand() % 10;
+	}
+}
+void takeInputArray(int array[], int size)
+{
+	int input;
+	cin >> input;
+	for (int i = size - 1; i > 0; i = i - 1)
+	{
+		array[i] = input % 10;
+		input = input / 10;
+	}
+}
+void printArray(int array[], int size)
+{
+	for (int i = 0; i < size; i = i + 1)
+	{
+		cout << array[i];
+	}
+	cout << '\n';
+}
+int compareArrays(int array1[], int array2[], int size)
+{
+	int count = 0;
+	for (int i = 0; i < size; i = i + 1)
+	{
+		if (array1[i] == array2[i])
+		{
+			count = count + 1;
+		}
+	}
+	return count;
+}
+void lotteryPrizeApp()
+{
+	int lottery[5], user[5], count;
+	assignRandomValues(lottery, 5);
+	cout << "Enter five digits : ";
+	takeInputArray(user, 5);
+	count = compareArrays(lottery, user, 5);
+	cout << "Lottery : ";
+	printArray(lottery, 5);
+	switch (count)
+	{
+	case 5:
+		cout << "All the digits are matched. You won Grand Prize!";
+		break;
+	default:
+		cout << count << " digits matched";
+		break;
+	}
+}

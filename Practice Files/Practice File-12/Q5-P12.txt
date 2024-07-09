@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+bool isUnique(int [], int );
+int main()
+{
+	int array[8] = { 1,2,3,7,7,6,0,4 };
+	cout << isUnique(array,8);
+	cout << endl;
+	return 0;
+}
+bool isUnique(int array[], int size)
+{
+	bool uniqueStatus = true;
+	int i = 0;
+	while (i < size && uniqueStatus == true)
+	{
+		int j = i + 1;
+		while (j < size && uniqueStatus == true)
+		{
+			if (array[i] == array[j])
+			{
+				uniqueStatus = false;
+			}
+			j = j + 1;
+		}
+		i = i + 1;
+	}
+	return uniqueStatus;
+}

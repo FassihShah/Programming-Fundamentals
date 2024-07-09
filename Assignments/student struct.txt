@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+struct Student
+{
+	int rollNo;
+	int marks;
+	float cgpa;
+};
+void addRecord(Student* st,int roll,int marks,float cgpa)
+{
+	st->rollNo = roll;
+	st->marks = marks;
+	st->cgpa = cgpa;
+}
+void displayStudent(Student* st)
+{
+	cout << "Roll No. : " << st->rollNo;
+	cout << "\nMarks : " << st->marks;
+	cout << "\nCGPA : " << st->cgpa;
+}
+int main()
+{
+	Student fassih,salman;
+	addRecord(&fassih, 23, 70, 3.4);  
+	addRecord(&salman, 04, 80, 3.3);
+	displayStudent(&salman);
+	cout << endl;
+	return 0;
+}

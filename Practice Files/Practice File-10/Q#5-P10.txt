@@ -1,0 +1,97 @@
+#include<iostream>
+using namespace std;
+bool findCircularPrime(int);
+int main()
+{
+	int num;
+	cout << "Enter the number : ";
+	cin >> num;
+	cout << findCircularPrime(num);
+	cout << endl;
+	return 0;
+}
+
+
+
+
+
+
+
+
+int findLenght(int num)
+{
+	int mode, lenght = 0;
+	while (num != 0)
+	{
+		mode = num % 10;
+		num = num / 10;
+		lenght = lenght + 1;
+	}
+	return lenght;
+}
+int findDivisor(int num)
+{
+	int divisor = 1,lenght= findLenght(num);
+	while (lenght > 1)
+	{
+		divisor = divisor * 10;
+		lenght = lenght - 1;
+	}
+	return divisor;
+}
+int circular(int num)
+{
+	int mode, divisor = findDivisor(num);
+	mode = num % 10;
+	num = num / 10;
+	if (mode == 0)
+	{
+		mode = 1;
+	}
+	mode = (mode * divisor) + num;
+	return mode;
+}
+bool findPrime(int num)
+{
+	int cnt = 2;
+	bool status = true;
+	while (cnt < num / 2 && status == true)
+	{
+		if (num % cnt == 0)
+		{
+			status = false;
+		}
+		else
+		{
+			cnt = cnt + 1;
+		}
+
+	}
+	return status;
+}
+bool findCircularPrime(int num)
+{
+	int lenght, cnt = 0, original;
+	bool status;
+	lenght = findLenght(num);
+	original = lenght;
+	while (lenght != 1)
+	{
+		lenght = lenght - 1;
+		num = circular(num);
+		status = findPrime(num);
+		if (status == true)
+		{
+			cnt = cnt + 1;
+		}
+	}
+	if (cnt == original)
+	{
+		status = true;
+	}
+	else
+	{
+		status == false;
+	}
+	return status;
+}

@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+void printPythagoreanTriplet(int=500);
+int main()
+{
+	printPythagoreanTriplet();
+	cout << endl;
+	return 0;
+}
+
+
+
+int GCD(int base, int divisor)
+{
+	int cnt;
+	while (divisor != 0)
+	{
+		cnt = base % divisor;
+		base = divisor;
+		divisor = cnt;
+	}
+	return base;
+}
+
+bool isPythagoreanTriplet(int a, int b, int c)
+{
+	bool pythagoreanStatus = false;
+	if ((a * a + b * b == c * c) && a < b && b < c)
+	{
+		if (GCD(a, b) == 1 && GCD(b, c) == 1)
+		{
+			pythagoreanStatus = true;
+		}
+	}
+	return pythagoreanStatus;
+}
+void printPythagoreanTriplet(int c)
+{
+	int a = c-2, b = c-1,cnt=c;
+	while (c >= 3)
+	{
+		c = c - 1;
+		while (b >= 2)
+		{
+			b = b - 1;
+			while (a >= 1)
+			{
+				a = a - 1;
+				if (isPythagoreanTriplet(a, b, c) == true)
+				{
+					cout << "(" << a << " , " << b << " , " << c << ") ";
+				}
+
+			}
+			a = cnt-2;
+		}
+		b = cnt-1;
+	}
+}

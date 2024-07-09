@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+char getRandomDigit();
+char getRandomAlphaNumeric();
+int main()
+{
+	cout << getRandomAlphaNumeric();
+	cout << endl;
+	return 0;
+}
+
+
+char getRandomCapitalAlpha()
+{
+	srand(time(0));
+	char randomCapital = 65 + rand() % (90 - 65 + 1);
+	return randomCapital;
+}
+char getRandomSmallAlpha()
+{
+	srand(time(0));
+	char randomSmall = 97 + rand() % (122 - 97 + 1);
+	return randomSmall;
+}
+char getRandomDigit()
+{
+	srand(time(0));
+	int randomDigit = 48 + rand() % (57 - 48 + 1);
+	return randomDigit;
+}
+char getRandomAlphaNumeric()
+{
+	srand(time(0));
+	int x = rand() % 3;
+	if (x == 0)
+	{
+		x = getRandomCapitalAlpha();
+	}
+	else if (x == 1)
+	{
+		x = getRandomSmallAlpha();
+	}
+	else
+	{
+		x = (int)getRandomDigit();
+	}
+	return x;
+}

@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+int main() 
+{
+	int bit, num, original, cnt;
+	cout << "Enter the number : ";
+	cin >> num;
+	original = num;
+	while (num != 0)
+	{
+		bit = num % 2;
+		if (bit == 1)
+			cnt = cnt + 1;
+		else
+			cnt = 0;
+		num = num / 2;
+		if (cnt > 1)
+		{
+			num = original + 1;
+			original = num;
+		}
+	}
+	cout << original;
+	cout << endl;
+	return 0;
+}

@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+void employeesData();
+int main()
+{
+	employeesData();
+	cout << endl;
+	return 0;
+}
+void employeesData()
+{
+	int empId[7] = { 5658845,4520125,7895122,8777541,8451277,1302850,7520489 }, hours[7];
+	double payRate[7], wages[7];
+	for (int i = 0; i < 7; i = i + 1)
+	{
+		cout << "Employer ID : " << empId[i] << '\n';
+		cout << "    Enter number of hours worked : ";
+		cin >> hours[i];
+		while (hours[i] < 0)
+		{
+			cout << "    Kindly enter positive number of hours : ";
+			cin >> hours[i];
+		}
+		cout << "    Enter pay Rate of employee : ";
+		cin >> payRate[i];
+		while (payRate[i] < 6.00)
+		{
+			cout << "    Kindly enter pay Rate greater than 6 : ";
+			cin >> payRate[i];
+		}
+		wages[i] = payRate[i] * hours[i];
+	}
+	cout << "\n   Employee's ID\tWages\n";
+	for (int i = 0; i < 7; i = i + 1)
+	{
+		cout << "       " << empId[i] << "\t       \t" << wages[i] << '\n';
+	}
+}

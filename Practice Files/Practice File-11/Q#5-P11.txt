@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+long long int convertSourceBaseToTarget(long long int , int=10 , int=2 );
+int main()
+{
+	
+	long long int targetNum= convertSourceBaseToTarget(1221, 3, 10);
+	cout << targetNum;
+	cout << endl;
+	return 0;
+}
+int getPower(int x, int power)
+{
+	int  answer;
+	int counter = 1;
+	answer = 1;
+	while (counter <= power)
+	{
+		answer = answer * x;
+		counter = counter + 1;
+	}
+	return answer;
+}
+
+long long int convertToBase10(long long int num, int sourceBase)
+{
+	int  exp = 0, mode, base10 = 0;
+	while (num != 0)
+	{
+		mode = num % 10;
+		num = num / 10;
+		base10 = base10 + (mode * getPower(sourceBase, exp));
+		exp = exp + 1;
+	}
+	return base10;
+}
+
+long long int convertBase10ToTarget(int numInBase10, int targetBase)
+{
+	int  mode, divisor = 1;
+	long long int numInTarget = 0;
+	while (numInBase10 >= targetBase)
+	{
+		mode = numInBase10 % targetBase;
+		numInBase10 = numInBase10 / targetBase;
+		mode = mode * divisor + numInTarget;
+		numInTarget = mode;
+		divisor = divisor * 10;
+	}
+	numInTarget = numInBase10 * divisor + numInTarget;
+	return numInTarget;
+}
+long long int convertSourceBaseToTarget(long long num, int sourceBase, int targetBase)
+{
+	if (sourceBase != 10)
+	{
+		num = convertToBase10(num, sourceBase);
+	}
+	num = convertBase10ToTarget(num, targetBase);
+	return num;
+}
+
+
+

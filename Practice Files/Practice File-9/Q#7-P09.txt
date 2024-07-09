@@ -1,0 +1,74 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	float time, min, rate = 0;
+	cout << fixed << showpoint << setprecision(2);
+	cout << "Enter starting time : ";
+	cin >> time;
+	while ((int)time > 23 || (time - (int)time) > 0.59)
+	{
+		cout << "Kindly Enter a valid starting time : ";
+		cin >> time;
+	}
+	cout << "Enter number of minutes : ";
+	cin >> min;
+	while (min != 0)
+	{
+		if (time < 6.59)
+		{
+			float x = 6.59 - time;
+			x = int(x) * 60 + (x - (int)x) * 100;
+			if (x < min)
+			{
+				rate = rate + x * 0.12;
+				min = min - x;
+				time = 7.00;
+			}
+			else
+			{
+				rate = rate + min * 0.12;
+				min = 0;
+				time = 23;
+			}
+		}
+		if (time < 19.00)
+		{
+			float y = (18.59 - time);
+			y = int(y) * 60 + (y - (int)y) * 100;
+			if (y < min)
+			{
+				rate = rate + y * 0.55;
+				min = min - y;
+				time = 19.01;
+			}
+			else
+			{
+				rate = rate + min * 0.55;
+				min = 0;
+				time = 25;
+			}
+		}
+		if(time<23.59)
+		{
+					float z = (23.59 - time);
+					z = (int)z * 60 + (z - (int)z) * 100;
+					if (z < min)
+					{
+						rate = rate + z * 0.34;
+						min = min - z;
+						time = 0.00;
+					}
+					else
+					{
+						rate = rate + min * 0.34;
+						min = 0;
+					}
+		}
+						
+	}
+	cout << rate;
+		cout << endl;
+		return 0;
+	}

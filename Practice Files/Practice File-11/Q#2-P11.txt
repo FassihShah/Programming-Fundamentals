@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+void printSimplifiedFraction(int, int);
+int main()
+{
+	printSimplifiedFraction(7, 0);
+	cout << endl;
+	return 0;
+}
+
+int GCD(int base, int divisor)
+{
+	int cnt ;
+	while (divisor != 0)
+	{
+		cnt = base % divisor;
+		base = divisor;
+		divisor = cnt;
+	}
+	return base;
+}
+
+void reduceFraction(int* x, int* y)
+{
+	int gcd = GCD(*x, *y);
+	
+		*x = *x / gcd;
+		*y = *y / gcd;
+}
+void printSimplifiedFraction(int nem,int dem)
+{
+	if (dem == 0)
+	{
+		cout << "infinity";
+	}
+	else if ((GCD(nem, dem) != 1))
+	{
+		reduceFraction(&nem, &dem);
+		if (dem == 1)
+		{
+			cout << nem;
+		}
+		else
+		{
+			cout << nem << "/" << dem;
+		}
+	}
+	else
+	{
+		if (dem > nem)
+		{
+			cout << nem << "/" << dem;
+		}
+		else
+		{
+			cout << nem / dem << " " << nem % dem << "/" << dem;
+		}
+	}
+}

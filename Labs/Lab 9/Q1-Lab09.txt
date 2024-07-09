@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+int returnSmallestPositive(int[], int);
+int main()
+{
+	int check[5] = { 7,8,9,11,12 };
+	cout << returnSmallestPositive(check, 5);
+	cout << endl;
+	return 0;
+}
+
+
+int returnSmallestPositive(int array[], int size)
+{
+	int minimum = 1;
+	bool minStatus = true;
+	while (minStatus == true)
+	{
+		bool matchStatus = true;
+		for (int i = 0; i < size && matchStatus == true; i = i + 1)
+		{
+			if (array[i] == minimum)
+			{
+				matchStatus = false;
+			}
+		}
+		if (matchStatus == true)
+		{
+			minStatus = false;
+		}
+		else
+		{
+			minimum = minimum + 1;
+		}
+	}
+	return minimum;
+}

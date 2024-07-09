@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+void convertToCelcius(float);
+int main()
+{
+	for (float fahrenheit = 0; fahrenheit <= 20; fahrenheit++)
+	{
+		cout << fahrenheit << " = ";
+	    convertToCelcius(fahrenheit);
+		cout << endl;
+	}
+	cout << endl;
+	return 0;
+}
+
+
+void convertToCelcius(float fahrenheit)
+{
+	float celcius;
+	celcius = 0.5556 * (fahrenheit - 32.0);
+	cout << celcius;
+}
+

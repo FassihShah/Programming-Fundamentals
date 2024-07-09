@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+void swapArrays(int [], int , int [], int );
+void printArray(int [], int );
+int main()
+{
+	int array1[5] = { 6,7,8,9,0 }, array2[5] = { 1,2,3,4,5 };
+	swapArrays(array1, 5, array2, 5);
+	printArray(array1, 5);
+	printArray(array2, 5);
+	cout << endl;
+	return 0;
+}
+void swap(int* a, int* b)
+{
+	int c = *a;
+	*a = *b;
+	*b = *a;
+}
+void swapArrays(int array1[], int size1, int array2[], int size2)
+{
+	if (size1 != size2)
+	{
+		return;
+	}
+	for (int i = 0; i < size1; i=i+1)
+	{
+		swap(array1[i], array2[i]);
+	}
+}
+void printArray(int array[], int size)
+{
+	for (int i = 0; i < size; i = i + 1)
+	{
+		cout << array[i] << " , ";
+	}
+	cout << '\n';
+}

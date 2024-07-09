@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i, N, firstTerm = 0, secondTerm = 1, sum;
+	cout << "Enter the number of terms : ";
+	cin >> N;
+	if (N == 1)
+		cout << firstTerm;
+	else if (N == 2)
+		cout << secondTerm;
+	else
+	{
+		for (i = 3; i <= N; i = i + 1)
+		{
+			sum = firstTerm + secondTerm;
+			firstTerm = secondTerm;
+			secondTerm = sum;
+		}
+		cout << sum;
+		
+	}
+	cout << endl;
+	return 0;
+}

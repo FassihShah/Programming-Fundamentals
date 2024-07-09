@@ -1,0 +1,33 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+void calculateRetail(float, float);
+int main()
+{
+	cout << fixed << showpoint << setprecision(2);
+	float wholeSale, markup;
+	cout << "Enter wholesale cost of the item : ";
+	cin >> wholeSale;
+	while (wholeSale < 0)
+	{
+		cout << "Kindly enter a positive cost : ";
+		cin >> wholeSale;
+	}
+	cout << "Enter markup percentage : ";
+	cin >> markup;
+	while (markup < 0)
+	{
+		cout << "Kindly enter a positive markup percentage : ";
+		cin >> markup;
+	}
+	cout << "Retail Price is : ";
+	calculateRetail(wholeSale, markup);
+	cout << endl;
+	return 0;
+}
+
+
+void calculateRetail(float x, float y)
+{
+	cout << x + ((x / 100) * y);
+}

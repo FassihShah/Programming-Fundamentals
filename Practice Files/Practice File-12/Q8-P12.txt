@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+void printLeaders(int [], int );
+int main()
+{
+	int array[6] = { 6,7,4,9,5,2 };
+	printLeaders(array, 6);
+	return 0;
+}
+
+
+void printLeaders(int array[], int size)
+{
+	for (int i = 0; i < size; i = i + 1)
+	{
+		bool status = true;
+		for (int j = i + 1; j < size; j = j + 1)
+		{
+			if (array[i] < array[j])
+			{
+				status = false;
+			}
+		}
+		if (status == true)
+		{
+			cout << array[i] << " ";
+		}
+	}
+}

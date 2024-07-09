@@ -1,0 +1,53 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int calculateRadius(int, int, int, int );
+int calculateCircumference(float );
+int calculateArea(float );
+int main()
+{
+	int x1, x2, y1, y2;
+	float radius;
+	char ch1,ch2;
+	cout << "Enter the center of circle : ";
+	cin >> x1;
+	cin.get(ch1);
+	cin >> y1;
+	cout << "Enter the point on the circle : ";
+	cin >> x2;
+	cin.get(ch2);
+	cin >> y2;
+	radius = calculateRadius(x1, y1, x2, y2);
+	cout << "Radius = " << radius << endl;
+	cout << "Diameter = " << radius * 2 << endl;
+	cout << "Circumference = " << calculateCircumference(radius) << endl;
+	cout << "Area = " << calculateArea(radius);
+	cout << endl;
+	return 0;
+}
+
+int calculateDistance(int x1, int x2, int y1, int y2)
+{
+	float distance;
+	distance = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+	distance = sqrt(distance);
+	return (float)distance;
+}
+
+int calculateRadius(int x1, int x2, int y1, int y2)
+{
+	float radius = calculateDistance(x1, x2, y1, y2);
+	return (float)radius;
+}
+
+int calculateCircumference(float radius)
+{
+	float circumference = 2 * 3.1416 * radius;
+	return (float)circumference;
+}
+
+int calculateArea(float radius)
+{
+	float area = 3.14168 * (radius * radius);
+    return (float)area;
+}

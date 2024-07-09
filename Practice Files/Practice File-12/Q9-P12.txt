@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+void printRearrangedEven(int [], int );
+int main()
+{
+	int array[5] = { 3,6,2,9,3 };
+	printRearrangedEven(array, 5);
+	return 0;
+}
+void printRearrangedEven(int array[], int size)
+{
+	int array2[5];
+	int cnt = 0, cnt2 = size - 1;
+	for (int i = 0; i < size; i = i + 1)
+	{
+		if (array[i] % 2 == 0)
+		{
+			array2[cnt] = array[i];
+			cnt = cnt + 1;
+		}
+		else
+		{
+			array2[cnt2] = array[i];
+			cnt2 = cnt2 - 1;
+		}
+	}
+	for (int i = 0; i < size; i = i + 1)
+	{
+		cout << array2[i] << " , ";
+	}
+}

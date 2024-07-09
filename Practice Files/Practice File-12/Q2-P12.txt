@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int getLastOccurance(int array[], int size);
+int main()
+{
+	int array[8] = { 10,12,9,78,90,9,78,90 };
+	cout << getLastOccurance(array, 8);
+	cout << endl;
+	return 0;
+}
+int getMinimum(int array[], int size)
+{
+	int minimum = array[0];
+	for (int i = 1; i < size; i=i+1)
+	{
+		if (minimum > array[i])
+		{
+			minimum = array[i];
+		}
+	}
+	return minimum;
+}
+int getLastOccurance(int array[], int size)
+{
+	int minimum = getMinimum(array, size),lastOccurance;
+	for (int i = 0; i < size; i=i+1)
+	{
+		if (array[i] == minimum)
+		{
+			lastOccurance = i;
+		}
+	}
+	return lastOccurance;
+}

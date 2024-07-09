@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int getMostLoveableDish(bool mat[][2], int N, int M);
+int main()
+{
+	bool mat[2][2] = { 0,0,0,0 };
+	cout << getMostLoveableDish(mat, 2, 2);
+	cout << endl;
+	return 0;
+}
+int getMostLoveableDish(bool mat[][2], int N, int M)
+{
+	int mostLoveable = 0, maxCount = 0, count = 0;
+	for (int i = 0; i < M; i = i + 1)
+	{
+		for (int j = 0; j < N; j = j + 1)
+		{
+			if (mat[j][i] == true)
+			{
+				count = count + 1;
+			}
+		}
+		if (count > maxCount)
+		{
+			maxCount = count;
+			mostLoveable = i;
+		}
+		else if (maxCount == 0)
+		{
+			mostLoveable = -1;
+		}
+		count = 0;
+	}
+	return mostLoveable;
+}

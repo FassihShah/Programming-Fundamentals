@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+void printRating();
+int main()
+{
+	printRating();
+	cout << endl;
+	return 0;
+}
+void printRating()
+{
+	int array[10] = { 0,0,0,0,0,0,0,0,0,0 }, rating;
+	for (int i = 1; i <= 40; i = i + 1)
+	{
+		cout << "Enter your Rating : ";
+		cin >> rating;
+		array[rating - 1] = array[rating - 1] + 1;
+	}
+	cout << "Rating         Frequency\n";
+	for (int i = 1; i <= 10; i = i + 1)
+	{
+		cout << i << "             :           " << array[i - 1] << '\n';
+	}
+}

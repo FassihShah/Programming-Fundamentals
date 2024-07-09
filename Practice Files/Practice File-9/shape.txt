@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int max, num;
+	cin >> num;
+	max = num*2;
+	for (int j = 1; j <= num; j = j + 1)
+	{
+		for (int i = 1; i < max; i = i + 1)
+		{
+			if (i == j || i == max-1)
+			{
+				cout << j;
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << '\n';
+		max = max - 1;
+	}
+	max = num * 2;
+	num = num - 1;
+	int n = num - 1;
+	for (int j = num; j >= 1; j = j - 1)
+	{
+		for (int i = max; i > 1; i = i - 1)
+		{
+			if (i == j + 1 || i == max - n)
+			{
+				cout << j;
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		n = n - 1;
+		cout << '\n';
+
+	}
+	cout << endl;
+	return 0;
+}

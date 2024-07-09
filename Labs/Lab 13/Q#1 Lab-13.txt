@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+int** createMatrix( int rows, int columns)
+{
+	int** matrix = new int* [rows];
+	for (int i = 0; i < rows; i = i + 1)
+	{
+		matrix[i] = new int[columns];
+	}
+	return matrix;
+}
+int** getRotatedMatrix(const int* const* const mat, const int rows, const int columns, int& newRows, int& newColumns)
+{
+	newRows = columns;
+	newColumns = rows;
+	int** matrix = createMatrix(newRows, newColumns);
+	for (int i = 0; i < rows; i = i + 1)
+	{
+		newRows = 0;
+		for (int j = 0; j < columns; j = j + 1)
+		{
+			matrix[newRows][newColumns-1] = mat[i][j];
+			newRows = newRows + 1;
+		}
+		newColumns = newColumns - 1;
+	}
+	newRows = columns;
+	newColumns = rows;
+	return matrix;
+}
+void print2DArray(const int* const* const mat, int rows, int columns)
+{
+	for (int i = 0; i < rows; i = i + 1)
+	{
+		for (int j = 0; j < columns; j = j + 1)
+		{
+			cout << mat[i][j] << "  ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+int main()
+{
+	int newRows, newColumns, rows = 3, columns = 4;
+	int** mat = createMatrix(rows, columns);
+	int count = 1;
+	for (int i = 0; i < rows; i = i + 1)
+	{
+		for (int j = 0; j < columns; j = j + 1)
+		{
+			mat[i][j] = count;
+			count = count + 1;
+		}
+	}
+	print2DArray(mat, rows, columns);
+	int** matrix = getRotatedMatrix(mat, rows, columns, newRows, newColumns);
+	print2DArray(matrix, newRows, newColumns);
+	cout << endl;
+	return 0;
+}

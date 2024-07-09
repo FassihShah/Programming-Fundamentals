@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+bool isSorted(int [], int );
+int main()
+{
+	int array[10] = { 34,32,31,30,23,22,20,15,14,11 };
+	cout << isSorted(array, 10);
+	cout << endl;
+	return 0;
+}
+
+bool checkAscending(int array[], int size)
+{
+	int ascending = true;
+	int i = 2;
+	while (ascending == true && i < size)
+	{
+		if (array[i] < array[i - 1])
+		{
+			ascending = false;
+		}
+		i = i + 1;
+	}
+	return ascending;
+}
+bool checkDescending(int array[], int size)
+{
+	int descending = true;
+	int i = 2;
+	while (descending == true && i < size)
+	{
+		if (array[i] > array[i - 1])
+		{
+			descending = false;
+		}
+		i = i + 1;
+	}
+	return descending;
+}
+bool isSorted(int array[], int size)
+{
+	bool ascending = false, descending = false, sortStatus = false;
+	if (array[1] > array[0])
+	{
+		ascending = checkAscending(array, size);
+	}
+	else if (array[1] < array[0])
+	{
+		descending = checkDescending(array, size);
+	}
+	if (ascending == true || descending == true)
+	{
+		sortStatus = true;
+	}
+	return sortStatus;
+}

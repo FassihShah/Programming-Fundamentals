@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+void showCos(double, double);
+int main()
+{
+	showCos(120, 15);
+	cout << endl;
+	return 0;
+}
+
+
+
+
+
+double getPower(double x, double power)
+{
+	double  answer;
+	int cnt2 = 1;
+	answer = 1;
+	while (cnt2 <= power)
+	{
+		answer = answer * x;
+		cnt2 = cnt2 + 1;
+	}
+	return answer;
+}
+double getFactorial(double x)
+{
+	for (double cnt = x - 1; cnt > 1; cnt = cnt - 1)
+	{
+		x = x * cnt;
+	}
+	return x;
+}
+
+
+void showCos(double x, double n)
+{
+	
+	double  sum = 1.0, term, power = 2;
+	int cnt = 2;
+	x = (x * 3.1416) / 180;
+	for (; cnt <= n; cnt++)
+	{
+		term = (getPower(x, power)) / (getFactorial(power));
+		if (cnt % 2 == 1)
+		{
+			sum = sum + term;
+		}
+		else
+		{
+			sum = sum - term;
+		}
+		power = power + 2;
+	}
+	cout << sum;
+}

@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+void drivingLicense();
+int main()
+{
+	drivingLicense();
+	cout << endl;
+	return 0;
+}
+void drivingLicense()
+{
+	int questions[20] = { 66,68,65,65,67,65,66,65,67,68,66,67,68,65,68,67,67,66,68,65 }, answers[20], correct = 0,incorrect[20];
+	int j = 0;
+	for (int i = 0; i < 20; i = i + 1)
+	{
+		cout << "Enter answer of " << i+1 << " question : ";
+		cin >> answers[i];
+		if (questions[i] == answers[i])
+		{
+			correct = correct + 1;
+		}
+		else
+		{
+			incorrect[j] = i;
+			j = j + 1;
+		}
+	}
+	if (correct >= 15)
+	{
+		cout << "You Passed the exam.";
+	}
+	else
+	{
+		cout << "You Failed the exam.";
+	}
+	cout << "Correct answers are " << correct;
+	cout << "\nIncorrect answers are " << 20 - correct;
+	cout << "You have given incorrect answers of ";
+	for (int i = 0; i < j; i = i + 1)
+	{
+		cout << incorrect[i]<<",";
+	}
+}
